@@ -4,9 +4,10 @@ import java.util.Scanner;
 public class Fibonacci {
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+        final Scanner in = new Scanner(System.in);
         System.out.print("Print № of number (the first is 1): ");
-        int numNumber = in.nextInt();
+        final int numNumber = in.nextInt();
+
         int oldNumber = 0;
         int number = 1;
         int sum = 1;
