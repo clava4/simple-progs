@@ -12,8 +12,6 @@ public class FactorialRecursion {
     }
 
     private static int factorialRecursion(int number) {
-        return number > 1
-            ? number * factorialRecursion(number - 1)
-            : 1;
+        return number > 1 ? number * factorialRecursion(number - 1) : 1;
     }
 }
