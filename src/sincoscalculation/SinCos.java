@@ -1,4 +1,5 @@
 package sincoscalculation;
+
 import java.util.Scanner;
 
 public class SinCos {
@@ -15,51 +16,50 @@ public class SinCos {
 
         System.out.print("x = ");
         double argument = in.nextDouble();
-        double sum;
 
-        sum = (sinCosChoice == 1) ? sin(argumentChange(argument,systemChoice)) : cos(argumentChange(argument,systemChoice));
-
-        System.out.println(sum);
+        System.out.println(calculation(argumentChange(argument, systemChoice), koef(sinCosChoice)));
     }
 
-    public static double argumentChange(double argument, int systemChoice){
+    public static double argumentChange(double argument, int systemChoice) {
         int coefficient = 1;
         final double PI = 3.141592653;
 
-        if (systemChoice == 2){
+        if (systemChoice == 2) {
             argument *= PI / 180;
         }
 
-        if (argument < 0){
+        if (argument < 0) {
             coefficient = -1;
         }
 
-        while (Math.abs(argument) > 2 * PI){
+        while (Math.abs(argument) > 2 * PI) {
             argument -= 2 * PI * coefficient;
         }
         return argument;
     }
 
-    public static double sin(double argument){
-        double sum;
-        double addition = argument;
-        sum = argument;
-        for (int j = 1; j < 50; j++) {
-            addition = -addition * argument * argument / (2 * j) / (2 * j + 1);
-            sum = sum + addition;
-        }
-        return sum;
+    public static int koef(int sinCosChoice) {
+         int koef = sinCosChoice == 1 ? 1 : -1;
+         return koef;
     }
 
-    public static double cos(double argument) {
+    public static double calculation(double argument, int koef) {
+        double addition;
         double sum;
-        double addition = 1;
-        sum = 1;
 
+        if (koef == 1) {
+            addition = argument;
+            sum = argument;
+        } else {
+            addition = 1;
+            sum = 1;
+        }
         for (int j = 1; j < 50; j++) {
-            addition = - addition * argument * argument / (2 * j) / (2 * j - 1);
-            sum = sum + addition;
+            addition = -addition * argument * argument / (2 * j) / (2 * j + koef);
+            sum += addition;
         }
         return sum;
+
     }
+
 }
