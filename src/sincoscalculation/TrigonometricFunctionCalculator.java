@@ -2,9 +2,8 @@ package sincoscalculation;
 
 public class TrigonometricFunctionCalculator {
 
-    public static void main(String[] args) {
-
-    }
+    private static final int STEPS_NUMBER = 50;
+    private static final int EVEN_NUMBER = 2;
 
     public double sin(double argument) {
         argument = coefficientApplier(argument);
@@ -29,13 +28,10 @@ public class TrigonometricFunctionCalculator {
     }
 
     private double calculate(double argument, int functionCoefficient, double addition, double sum) {
-        final int STEPSNUMBER = 50;
-        final int EVENNUMBER = 2;
-        for (int j = 1; j < STEPSNUMBER; j++) {
-            addition = -addition * argument * argument / (EVENNUMBER * j) / (EVENNUMBER * j + functionCoefficient);
+        for (int j = 1; j < STEPS_NUMBER; j++) {
+            addition = -addition * argument * argument / (EVEN_NUMBER * j) / (EVEN_NUMBER * j + functionCoefficient);
             sum += addition;
         }
         return sum;
     }
-
 }
